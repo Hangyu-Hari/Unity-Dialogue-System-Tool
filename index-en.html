@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialogue System Documentation - English</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+        <a href="#" class="logo">Dialogue System Docs</a>
+        <div class="header-right">
+            <a href="index-zh.html" class="lang-switch">中文</a>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="nav-section">
+            <div class="nav-title">Getting Started</div>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#quick-start" class="nav-link">Quick Start</a>
+            
+            <div class="nav-title">Core</div>
+            <a href="#core-components" class="nav-link">Core Components</a>
+            <a href="#localization" class="nav-link">Localization System</a>
+            <a href="#dialogue-editor" class="nav-link">Dialogue Tree Editor</a>
+            <a href="#manager-window" class="nav-link">Manager Window</a>
+            
+            <div class="nav-title">Advanced</div>
+            <a href="#advanced" class="nav-link">Advanced Features</a>
+            <a href="#api" class="nav-link">API Reference</a>
+            <a href="#best-practices" class="nav-link">Best Practices</a>
+            <a href="#faq" class="nav-link">FAQ</a>
+            
+            <div class="nav-title">Resources</div>
+            <a href="#updates" class="nav-link">Updates</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="content">
+            <section id="intro">
+                <h1>🎮 Dialogue System & Localization</h1>
+                <p>A comprehensive Unity dialogue system with visual dialogue tree editor, multi-language localization, conditional branching, choice system, and event triggering.</p>
+            </section>
+
+            <section id="features">
+                <h2>Features</h2>
+                
+                <h3>Dialogue System</h3>
+                <ul>
+                    <li><strong>Visual Dialogue Tree Editor</strong> - Node-based dialogue flow design</li>
+                    <li><strong>Branching Dialogues</strong> - Support for player choices and multi-branch storylines</li>
+                    <li><strong>Conditional Logic</strong> - Dynamic dialogue flow based on game state</li>
+                    <li><strong>Event System</strong> - Trigger game events during dialogues</li>
+                    <li><strong>Character Management</strong> - Centralized character and avatar management</li>
+                    <li><strong>Typewriter Effect</strong> - Customizable text display animation</li>
+                </ul>
+
+                <h3>Localization System</h3>
+                <ul>
+                    <li><strong>Multi-language Support</strong> - English / 中文 / 日本語</li>
+                    <li><strong>Google Sheets Integration</strong> - Import translations from cloud spreadsheets</li>
+                    <li><strong>Auto Fallback</strong> - Automatic fallback when translations are missing</li>
+                    <li><strong>Font Switching</strong> - Automatic font change based on language</li>
+                    <li><strong>Dual Mode</strong> - Support both local editing and online management</li>
+                </ul>
+            </section>
+
+            <section id="quick-start">
+                <h2>Quick Start</h2>
+                
+                <p>Get your first dialogue system up and running in 5 minutes with this tutorial!</p>
+
+                <div class="step-box">
+                    <h5>Step 1: Open Manager Window</h5>
+                    <p>In the Unity Editor, access the Dialogue System Manager through the top menu bar:</p>
+                    <pre><code>Unity Menu → Tools → Dialogue System → Manager Window</code></pre>
+                    <p>The Manager Window will open, displaying character management, dialogue tree list, and localization settings.</p>
+                </div>
+
+                <div class="step-box">
+                    <h5>Step 2: Choose Your Localization Mode</h5>
+                    <p>The dialogue system supports two text management approaches. Choose based on your project needs:</p>
+                    
+                    <h6><strong>📝 Option A: Local Mode (Recommended for Beginners)</strong></h6>
+                    <div class="alert alert-info">
+                        <strong>Best for:</strong> Quick prototyping, small projects, learning the system
+                    </div>
+                    <ul>
+                        <li>✅ Enter text directly in the dialogue tree editor for each language</li>
+                        <li>✅ No external tools or configuration needed</li>
+                        <li>✅ See results immediately</li>
+                        <li>✅ Perfect for testing and demos</li>
+                    </ul>
+                    <p><strong>How to use:</strong> Set <code>useContentId = false</code> in dialogue nodes, then enter text directly.</p>
+                    
+                    <h6><strong>🌐 Option B: Online Mode (Recommended for Teams)</strong></h6>
+                    <div class="alert alert-info">
+                        <strong>Best for:</strong> Large projects, team collaboration, professional translation management
+                    </div>
+                    <ul>
+                        <li>✅ Centrally manage all translations using Google Sheets</li>
+                        <li>✅ Translators don't need Unity access</li>
+                        <li>✅ Easy to batch update and version control</li>
+                        <li>✅ Supports collaborative workflows</li>
+                    </ul>
+                    <p><strong>How to use:</strong> Set <code>useContentId = true</code> in dialogue nodes and reference IDs from Google Sheets.</p>
+                    
+                    <div class="alert alert-success">
+                        <strong>💡 Pro Tip:</strong> You can mix both modes in the same project! Use online mode for main story, local mode for test content.
+                    </div>
+
+                    <p><strong>Setting up Google Sheets (Online Mode Only):</strong></p>
+                    <ol>
+                        <li>Create a Google Sheets with format: <code>ID,中文,English,日本語</code></li>
+                        <li>Publish as CSV (File → Share → Publish to web → CSV format)</li>
+                        <li>Paste the CSV URL at the top of Manager Window</li>
+                        <li>Click <strong>Load</strong> button to load translation data</li>
+                    </ol>
+                    <p>For detailed Google Sheets setup instructions, see the <a href="#localization">Localization System</a> section.</p>
+                </div>
+
+                <div class="step-box">
+                    <h5>Step 3: Create Characters</h5>
+                    <p>Characters represent speakers in your dialogues. Let's create your first character:</p>
+                    <ol>
+                        <li><strong>Right-click</strong> on the <strong>"All Characters"</strong> title in the Manager Window</li>
+                        <li>Select <strong>"+ New Character"</strong></li>
+                        <li>Configure character properties:
+                            <ul>
+                                <li><strong>Character ID:</strong> Internal identifier (e.g., "knight", "merchant")</li>
+                                <li><strong>Display Name:</strong>
+                                    <ul>
+                                        <li><em>Local Mode:</em> Enter names directly for each language</li>
+                                        <li><em>Online Mode:</em> Check "Use Name ID" and enter the ID from Google Sheets</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Avatar:</strong> Enter resource path in Resources folder (e.g., "Characters/Knight")</li>
+                                <li><strong>Is Player:</strong> Check if this is a player character (for UI distinction)</li>
+                            </ul>
+                        </li>
+                        <li>Click <strong>Save</strong> to finish</li>
+                    </ol>
+                    
+                    <div class="alert alert-warning">
+                        <strong>⚠️ Important:</strong> Avatar resources must be placed under Assets/Resources folder to load at runtime!
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <h5>Step 4: Create Dialogue Tree</h5>
+                    <p>Dialogue trees define the flow and branches of conversations. Create your first dialogue:</p>
+                    <ol>
+                        <li><strong>Right-click</strong> on the <strong>"All Dialogues"</strong> title in the Manager Window</li>
+                        <li>Select <strong>"+ New Dialogue"</strong></li>
+                        <li>Choose save location and enter filename (e.g., "Chapter1_Intro")</li>
+                        <li>A new .dtree file will be created</li>
+                        <li><strong>Double-click</strong> the dialogue file to open it in the Dialogue Tree Editor</li>
+                    </ol>
+                    
+                    <p><strong>In the Dialogue Tree Editor:</strong></p>
+                    <ul>
+                        <li><strong>Add Nodes:</strong> Right-click empty space → Create Node</li>
+                        <li><strong>Edit Nodes:</strong> Click on a node to configure content, character, and choices</li>
+                        <li><strong>Connect Nodes:</strong> Drag from a node's output port to the next node's input port</li>
+                        <li><strong>Add Choices:</strong> Click "+ Add Choice" button within a node</li>
+                        <li><strong>Export:</strong> Click <strong>Export</strong> button in toolbar to generate JSON when finished</li>
+                    </ul>
+                    
+                    <div class="alert alert-info">
+                        <strong>💡 Tip:</strong> Export creates a .json file in the same directory, which is what your game will use at runtime.
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <h5>Step 5: Use in Scene</h5>
+                    <p>Now let's make the dialogue work in your game!</p>
+                    
+                    <h6><strong>A. Add DialogueController to Scene</strong></h6>
+                    <ol>
+                        <li>Drag the <code>DialogueController</code> prefab into your scene</li>
+                        <li>Ensure the scene has a Canvas (required for dialogue UI)</li>
+                    </ol>
+                    
+                    <h6><strong>B. Trigger Dialogue in Code</strong></h6>
+                    <p>Create a script to start dialogue (e.g., when interacting with an NPC):</p>
+                    <pre><code>using UnityEngine;
+
+public class NPCInteraction : MonoBehaviour
+{
+    [Header("Dialogue Configuration")]
+    [SerializeField] private TextAsset dialogueJsonFile;  // Drag exported JSON in Inspector
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            StartDialogue();
+        }
+    }
+    
+    private void StartDialogue()
+    {
+        // Load dialogue data
+        DialogueController.instance.LoadDialogueFromFile(dialogueJsonFile);
+        
+        // Start dialogue
+        DialogueController.instance.StartDialogue();
+    }
+}</code></pre>
+
+                    <h6><strong>C. Test the Dialogue</strong></h6>
+                    <ol>
+                        <li>Drag the exported JSON file into the script's <code>dialogueJsonFile</code> field</li>
+                        <li>Run the scene</li>
+                        <li>Trigger the dialogue (e.g., approach the NPC)</li>
+                        <li>Use <strong>Space key</strong> or <strong>mouse click</strong> to advance dialogue</li>
+                    </ol>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>🎉 Complete!</strong> You've created your first dialogue system. Next steps:
+                    <ul>
+                        <li>Add more characters and dialogue branches</li>
+                        <li>Create player choices using the choice system</li>
+                        <li>Add conditional logic for dynamic dialogues</li>
+                        <li>Configure event triggers to change game state</li>
+                    </ul>
+                    Check out the <a href="#dialogue-editor">Dialogue Tree Editor</a> and <a href="#advanced">Advanced Features</a> to learn more!
+                </div>
+            </section>
+
+            <section id="manager-window">
+                <h2>Manager Window Guide</h2>
+                
+                <p>The Manager Window is the central hub for managing your dialogue system. Access it via <code>Tools → Dialogue System → Manager Window</code></p>
+
+                <h3>How to Use New Context Menus</h3>
+                <ul>
+                    <li><strong>Create Character:</strong> Right-click "All Characters" → "+ New Character"</li>
+                    <li><strong>Create Dialogue:</strong> Right-click "All Dialogues" → "+ New Dialogue"</li>
+                    <li><strong>Rename Folder:</strong> Right-click folder → "Rename"</li>
+                    <li><strong>Delete Folder:</strong> Right-click folder → "Delete"</li>
+                    <li><strong>Create Subfolder:</strong> Right-click any folder → "New Folder"</li>
+                </ul>
+            </section>
+
+            <section id="updates">
+                <h2>📋 Update Log</h2>
+                
+                <div class="alert alert-info">
+                    Stay up to date with the latest features, improvements, and bug fixes for the Dialogue System.
+                </div>
+
+                <h3>🎉 Version 1.2.0 - January 2026</h3>
+                <p><span class="badge badge-success">UI Improvement</span> <span class="badge badge-info">Manager Window</span></p>
+                
+                <h4>Manager Window UI Redesign</h4>
+                <p>Complete overhaul of the Manager Window interface for better usability and cleaner design.</p>
+                
+                <h5>What Changed:</h5>
+                <ul>
+                    <li><strong>Context Menu Navigation</strong>
+                        <ul>
+                            <li>Moved "+ New Character" button to "All Characters" right-click menu</li>
+                            <li>Moved "+ New Dialogue" button to "All Dialogues" right-click menu</li>
+                            <li>Moved folder "Rename" and "Delete" buttons to folder right-click menus</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cleaner Interface</strong>
+                        <ul>
+                            <li>Removed visible action buttons from headers and folders</li>
+                            <li>Reduced visual clutter while maintaining full functionality</li>
+                            <li>More screen space for viewing characters and dialogues</li>
+                        </ul>
+                    </li>
+                    <li><strong>Preserved Functionality</strong>
+                        <ul>
+                            <li>Character Edit/Delete buttons remain on character cards</li>
+                            <li>All drag-and-drop features still work as before</li>
+                            <li>Folder organization unchanged</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h5>How to Use:</h5>
+                <ul>
+                    <li><strong>To create a new character:</strong> Right-click "All Characters" → "+ New Character"</li>
+                    <li><strong>To create a new dialogue:</strong> Right-click "All Dialogues" → "+ New Dialogue"</li>
+                    <li><strong>To rename a folder:</strong> Right-click folder → "Rename"</li>
+                    <li><strong>To delete a folder:</strong> Right-click folder → "Delete"</li>
+                    <li><strong>To create a subfolder:</strong> Right-click any folder → "New Folder"</li>
+                </ul>
+
+                <div class="alert alert-success">
+                    <strong>✨ Result:</strong> A more intuitive, professional interface that's easier to navigate and less overwhelming for new users!
+                </div>
+
+                <hr style="margin: 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+
+                <h3>Previous Versions</h3>
+                
+                <h4>Version 1.1.0 - December 2025</h4>
+                <p><span class="badge badge-info">Feature</span> <span class="badge badge-success">Enhancement</span></p>
+                <ul>
+                    <li>Added folder organization for characters and dialogues</li>
+                    <li>Implemented drag-and-drop reordering</li>
+                    <li>Added folder description support</li>
+                    <li>Improved visual feedback during drag operations</li>
+                </ul>
+
+                <h4>Version 1.0.0 - November 2025</h4>
+                <p><span class="badge badge-success">Initial Release</span></p>
+                <ul>
+                    <li>Core dialogue system with visual editor</li>
+                    <li>Multi-language localization support</li>
+                    <li>Google Sheets integration</li>
+                    <li>Character management system</li>
+                    <li>Choice and conditional branching</li>
+                    <li>Event system integration</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

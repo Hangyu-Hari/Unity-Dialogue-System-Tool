@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对话系统文档 - 中文</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+        <a href="#" class="logo">对话系统文档</a>
+        <div class="header-right">
+            <a href="index-en.html" class="lang-switch">English</a>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="nav-section">
+            <div class="nav-title">快速开始</div>
+            <a href="#features" class="nav-link">功能特性</a>
+            <a href="#quick-start" class="nav-link">快速开始</a>
+            
+            <div class="nav-title">核心</div>
+            <a href="#core-components" class="nav-link">核心组件</a>
+            <a href="#localization" class="nav-link">本地化系统</a>
+            <a href="#dialogue-editor" class="nav-link">对话树编辑器</a>
+            <a href="#manager-window" class="nav-link">管理器窗口</a>
+            
+            <div class="nav-title">高级</div>
+            <a href="#advanced" class="nav-link">高级功能</a>
+            <a href="#api" class="nav-link">API 参考</a>
+            <a href="#best-practices" class="nav-link">最佳实践</a>
+            <a href="#faq" class="nav-link">常见问题</a>
+            
+            <div class="nav-title">资源</div>
+            <a href="#updates" class="nav-link">更新日志</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="content">
+            <section id="intro">
+                <h1>🎮 对话系统 & 本地化</h1>
+                <p>一个功能完整的 Unity 对话系统，支持可视化对话树编辑、多语言本地化、条件分支、选项系统和事件触发。</p>
+            </section>
+
+            <section id="features">
+                <h2>功能特性</h2>
+                
+                <h3>对话系统</h3>
+                <ul>
+                    <li><strong>可视化对话树编辑器</strong> - 节点式对话流程设计</li>
+                    <li><strong>分支对话</strong> - 支持玩家选择和多分支剧情</li>
+                    <li><strong>条件判断</strong> - 基于游戏状态的动态对话流程</li>
+                    <li><strong>事件系统</strong> - 在对话过程中触发游戏事件</li>
+                    <li><strong>角色管理</strong> - 统一管理对话角色和头像</li>
+                    <li><strong>打字机效果</strong> - 可自定义速度的文字显示动画</li>
+                </ul>
+
+                <h3>本地化系统</h3>
+                <ul>
+                    <li><strong>多语言支持</strong> - English / 中文 / 日本語</li>
+                    <li><strong>Google Sheets 集成</strong> - 从云端表格导入翻译</li>
+                    <li><strong>自动 Fallback</strong> - 缺失翻译时自动降级显示</li>
+                    <li><strong>字体切换</strong> - 根据语言自动切换字体</li>
+                    <li><strong>双模式</strong> - 支持本地编辑和在线管理</li>
+                </ul>
+            </section>
+
+            <section id="quick-start">
+                <h2>快速开始</h2>
+                
+                <p>通过这个5分钟教程，快速设置并运行你的第一个对话系统！</p>
+
+                <div class="step-box">
+                    <h5>步骤 1: 打开管理器窗口</h5>
+                    <p>在Unity编辑器中，通过顶部菜单栏访问对话系统管理器：</p>
+                    <pre><code>Unity 菜单 → Tools → Dialogue System → Manager Window</code></pre>
+                    <p>管理器窗口将打开，显示角色管理、对话树列表和本地化设置。</p>
+                </div>
+
+                <div class="step-box">
+                    <h5>步骤 2: 选择本地化模式</h5>
+                    <p>对话系统支持两种文本管理方式。根据你的项目需求选择：</p>
+                    
+                    <h6><strong>📝 选项 A: 本地模式（推荐新手）</strong></h6>
+                    <div class="alert alert-info">
+                        <strong>最适合：</strong>快速原型开发、小型项目、学习系统
+                    </div>
+                    <ul>
+                        <li>✅ 直接在对话树编辑器中输入各语言文本</li>
+                        <li>✅ 无需外部工具或配置</li>
+                        <li>✅ 立即看到效果</li>
+                        <li>✅ 完美用于测试和演示</li>
+                    </ul>
+                    <p><strong>使用方法：</strong>在对话节点中设置 <code>useContentId = false</code>，然后直接输入文本。</p>
+                    
+                    <h6><strong>🌐 选项 B: 在线模式（推荐团队）</strong></h6>
+                    <div class="alert alert-info">
+                        <strong>最适合：</strong>大型项目、团队协作、专业翻译管理
+                    </div>
+                    <ul>
+                        <li>✅ 使用 Google Sheets 集中管理所有翻译</li>
+                        <li>✅ 翻译人员无需访问 Unity</li>
+                        <li>✅ 易于批量更新和版本控制</li>
+                        <li>✅ 支持协作工作流程</li>
+                    </ul>
+                    <p><strong>使用方法：</strong>在对话节点中设置 <code>useContentId = true</code>，并引用Google Sheets中的ID。</p>
+                    
+                    <div class="alert alert-success">
+                        <strong>💡 专业提示：</strong>两种模式可以在同一项目中混合使用！主要剧情用在线模式，测试内容用本地模式。
+                    </div>
+
+                    <p><strong>设置Google Sheets（仅在线模式需要）：</strong></p>
+                    <ol>
+                        <li>创建Google Sheets，按格式设置：<code>ID,中文,English,日本語</code></li>
+                        <li>发布为CSV（文件 → 共享 → 发布到网络 → CSV格式）</li>
+                        <li>在管理器窗口顶部粘贴CSV URL</li>
+                        <li>点击 <strong>Load</strong> 按钮加载翻译数据</li>
+                    </ol>
+                    <p>详细的Google Sheets设置说明请参见<a href="#localization">本地化系统</a>章节。</p>
+                </div>
+
+                <div class="step-box">
+                    <h5>步骤 3: 创建角色</h5>
+                    <p>角色代表对话中的说话者。让我们创建你的第一个角色：</p>
+                    <ol>
+                        <li>在管理器窗口的 <strong>"全部角色"</strong> 标题上 <strong>右键点击</strong></li>
+                        <li>选择 <strong>"+ 新建角色"</strong></li>
+                        <li>配置角色属性：
+                            <ul>
+                                <li><strong>角色ID：</strong>内部标识符（如 "knight", "merchant"）</li>
+                                <li><strong>显示名称：</strong>
+                                    <ul>
+                                        <li><em>本地模式：</em>直接输入各语言的名称</li>
+                                        <li><em>在线模式：</em>勾选"使用名称ID"并输入Google Sheets中的ID</li>
+                                    </ul>
+                                </li>
+                                <li><strong>头像：</strong>输入Resources文件夹中的资源路径（如 "Characters/Knight"）</li>
+                                <li><strong>是玩家：</strong>如果是玩家角色则勾选（用于UI区分）</li>
+                            </ul>
+                        </li>
+                        <li>点击 <strong>保存</strong> 完成</li>
+                    </ol>
+                    
+                    <div class="alert alert-warning">
+                        <strong>⚠️ 重要：</strong>头像资源必须放在Assets/Resources文件夹下才能在运行时加载！
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <h5>步骤 4: 创建对话树</h5>
+                    <p>对话树定义了对话的流程和分支。创建你的第一个对话：</p>
+                    <ol>
+                        <li>在管理器窗口的 <strong>"全部对话"</strong> 标题上 <strong>右键点击</strong></li>
+                        <li>选择 <strong>"+ 新建对话"</strong></li>
+                        <li>选择保存位置并输入文件名（如 "Chapter1_Intro"）</li>
+                        <li>新的 .dtree 文件将被创建</li>
+                        <li><strong>双击</strong>对话文件在对话树编辑器中打开</li>
+                    </ol>
+                    
+                    <p><strong>在对话树编辑器中：</strong></p>
+                    <ul>
+                        <li><strong>添加节点：</strong>右键空白处 → Create Node</li>
+                        <li><strong>编辑节点：</strong>点击节点配置内容、角色、选项</li>
+                        <li><strong>连接节点：</strong>从节点输出端口拖线到下一个节点的输入端口</li>
+                        <li><strong>添加选项：</strong>点击节点内的"+ Add Choice"按钮</li>
+                        <li><strong>导出：</strong>完成编辑后点击工具栏的 <strong>Export</strong> 按钮生成JSON</li>
+                    </ul>
+                    
+                    <div class="alert alert-info">
+                        <strong>💡 提示：</strong>导出会在同一目录生成 .json 文件，这是游戏运行时实际使用的文件。
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <h5>步骤 5: 在场景中使用</h5>
+                    <p>现在让对话在游戏中运行起来！</p>
+                    
+                    <h6><strong>A. 添加DialogueController到场景</strong></h6>
+                    <ol>
+                        <li>将 <code>DialogueController</code> 预制体拖入场景</li>
+                        <li>确保场景中有Canvas（对话UI需要）</li>
+                    </ol>
+                    
+                    <h6><strong>B. 在代码中触发对话</strong></h6>
+                    <p>创建一个脚本来启动对话（例如在NPC交互时）：</p>
+                    <pre><code>using UnityEngine;
+
+public class NPCInteraction : MonoBehaviour
+{
+    [Header("对话配置")]
+    [SerializeField] private TextAsset dialogueJsonFile;  // 在Inspector中拖入导出的JSON
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            StartDialogue();
+        }
+    }
+    
+    private void StartDialogue()
+    {
+        // 加载对话数据
+        DialogueController.instance.LoadDialogueFromFile(dialogueJsonFile);
+        
+        // 开始对话
+        DialogueController.instance.StartDialogue();
+    }
+}</code></pre>
+
+                    <h6><strong>C. 测试对话</strong></h6>
+                    <ol>
+                        <li>将导出的JSON文件拖入脚本的 <code>dialogueJsonFile</code> 字段</li>
+                        <li>运行场景</li>
+                        <li>触发对话（如靠近NPC）</li>
+                        <li>使用 <strong>空格键</strong> 或 <strong>鼠标点击</strong> 推进对话</li>
+                    </ol>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>🎉 完成！</strong>你已经创建了第一个对话系统。接下来可以：
+                    <ul>
+                        <li>添加更多角色和对话分支</li>
+                        <li>使用选项创建玩家选择</li>
+                        <li>添加条件判断实现动态对话</li>
+                        <li>配置事件触发器改变游戏状态</li>
+                    </ul>
+                    查看<a href="#dialogue-editor">对话树编辑器</a>和<a href="#advanced">高级功能</a>了解更多！
+                </div>
+            </section>
+
+            <section id="manager-window">
+                <h2>管理器窗口使用指南</h2>
+                
+                <p>管理器窗口是管理对话系统的中央枢纽。通过 <code>Tools → Dialogue System → Manager Window</code> 访问</p>
+
+                <h3>窗口概览</h3>
+                <p>管理器窗口包含四个主要部分：</p>
+                <ul>
+                    <li><strong>本地化设置</strong> - 配置 Google Sheets 集成</li>
+                    <li><strong>全部角色</strong> - 管理对话角色和头像</li>
+                    <li><strong>全部对话</strong> - 组织对话树文件</li>
+                    <li><strong>工具栏操作</strong> - 快速访问扫描和刷新功能</li>
+                </ul>
+
+                <h3>1. 角色管理</h3>
+                
+                <h4>创建角色</h4>
+                <div class="step-box">
+                    <h5>方法：使用右键菜单（推荐）</h5>
+                    <ol>
+                        <li>在 <strong>"全部角色"</strong> 标题上右键</li>
+                        <li>选择 <strong>"+ 新建角色"</strong></li>
+                        <li>新角色将以编辑模式出现</li>
+                    </ol>
+                </div>
+
+                <h4>编辑角色</h4>
+                <p>点击任意角色卡片上的 <strong>编辑</strong> 按钮进行修改：</p>
+                <ul>
+                    <li><strong>角色 ID</strong> - 内部标识符（显示为 "Character:"）</li>
+                    <li><strong>名称</strong> - 显示名称，支持两种输入模式：
+                        <ul>
+                            <li><strong>直接输入</strong> - 直接为每种语言输入文本</li>
+                            <li><strong>使用 ID</strong> - 引用 Google Sheets 中的本地化 ID</li>
+                        </ul>
+                    </li>
+                    <li><strong>头像</strong> - 角色肖像（必须在 Resources 文件夹中）</li>
+                    <li><strong>是玩家</strong> - 切换该角色是否代表玩家</li>
+                </ul>
+
+                <h4>使用文件夹组织</h4>
+                <div class="step-box">
+                    <h5>创建角色文件夹</h5>
+                    <ol>
+                        <li>在 <strong>"全部角色"</strong> 或任意文件夹上右键</li>
+                        <li>选择 <strong>"新建文件夹"</strong></li>
+                        <li>命名文件夹（例如："主角色"、"NPC"）</li>
+                    </ol>
+                </div>
+                
+                <p><strong>文件夹操作（通过右键）：</strong></p>
+                <ul>
+                    <li><strong>新建文件夹</strong> - 创建子文件夹</li>
+                    <li><strong>重命名</strong> - 更改文件夹名称</li>
+                    <li><strong>删除</strong> - 移除文件夹（角色将移至"全部角色"）</li>
+                </ul>
+
+                <p><strong>移动角色：</strong>在文件夹间拖放角色或在文件夹内重新排序。</p>
+
+                <h3>2. 对话树管理</h3>
+                
+                <h4>创建对话树</h4>
+                <div class="step-box">
+                    <h5>方法：使用右键菜单（推荐）</h5>
+                    <ol>
+                        <li>在 <strong>"全部对话"</strong> 标题上右键</li>
+                        <li>选择 <strong>"+ 新建对话"</strong></li>
+                        <li>选择保存位置并输入文件名</li>
+                        <li>新的 .dtree 文件将被创建并打开</li>
+                    </ol>
+                </div>
+
+                <h4>打开对话树</h4>
+                <p>双击任意对话文件在对话树编辑器中打开。</p>
+
+                <h4>使用文件夹组织</h4>
+                <div class="step-box">
+                    <h5>创建对话文件夹</h5>
+                    <ol>
+                        <li>在 <strong>"全部对话"</strong> 或任意文件夹上右键</li>
+                        <li>选择 <strong>"新建文件夹"</strong></li>
+                        <li>命名文件夹（例如："第一章"、"支线任务"）</li>
+                    </ol>
+                </div>
+
+                <p><strong>文件夹操作（通过右键）：</strong></p>
+                <ul>
+                    <li><strong>新建文件夹</strong> - 创建子文件夹</li>
+                    <li><strong>重命名</strong> - 更改文件夹名称</li>
+                    <li><strong>删除</strong> - 移除文件夹（文件将移至"全部对话"）</li>
+                </ul>
+
+                <p><strong>移动文件：</strong>在文件夹间拖放对话文件或在文件夹内重新排序。</p>
+
+                <div class="alert alert-info">
+                    <strong>💡 专业提示：</strong>使用文件夹按章节、角色弧线或游戏位置组织内容。这使得在大型项目中更容易查找和管理对话。
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>✨ 最新更新：</strong>所有创建、重命名和删除操作已移至右键菜单，界面更加简洁！
+                </div>
+            </section>
+
+            <section id="updates">
+                <h2>📋 更新日志</h2>
+                
+                <div class="alert alert-info">
+                    及时了解对话系统的最新功能、改进和错误修复。
+                </div>
+
+                <h3>🎉 版本 1.2.0 - 2026年1月</h3>
+                <p><span class="badge badge-success">界面改进</span> <span class="badge badge-info">管理器窗口</span></p>
+                
+                <h4>管理器窗口 UI 重新设计</h4>
+                <p>完全重构管理器窗口界面，提升可用性和设计简洁性。</p>
+                
+                <h5>变更内容：</h5>
+                <ul>
+                    <li><strong>右键菜单导航</strong>
+                        <ul>
+                            <li>将"+ 新建角色"按钮移至"全部角色"右键菜单</li>
+                            <li>将"+ 新建对话"按钮移至"全部对话"右键菜单</li>
+                            <li>将文件夹"重命名"和"删除"按钮移至文件夹右键菜单</li>
+                        </ul>
+                    </li>
+                    <li><strong>更简洁的界面</strong>
+                        <ul>
+                            <li>移除标题和文件夹上的可见操作按钮</li>
+                            <li>减少视觉杂乱同时保持完整功能</li>
+                            <li>更多屏幕空间用于查看角色和对话</li>
+                        </ul>
+                    </li>
+                    <li><strong>保留的功能</strong>
+                        <ul>
+                            <li>角色卡片上的编辑/删除按钮保持不变</li>
+                            <li>所有拖放功能照常工作</li>
+                            <li>文件夹组织方式不变</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h5>使用方法：</h5>
+                <ul>
+                    <li><strong>创建新角色：</strong>右键点击"全部角色" → "+ 新建角色"</li>
+                    <li><strong>创建新对话：</strong>右键点击"全部对话" → "+ 新建对话"</li>
+                    <li><strong>重命名文件夹：</strong>右键点击文件夹 → "重命名"</li>
+                    <li><strong>删除文件夹：</strong>右键点击文件夹 → "删除"</li>
+                    <li><strong>创建子文件夹：</strong>右键点击任意文件夹 → "新建文件夹"</li>
+                </ul>
+
+                <div class="alert alert-success">
+                    <strong>✨ 效果：</strong>更直观、更专业的界面，更易于导航，对新用户更友好！
+                </div>
+
+                <hr style="margin: 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+
+                <h3>历史版本</h3>
+                
+                <h4>版本 1.1.0 - 2025年12月</h4>
+                <p><span class="badge badge-info">功能</span> <span class="badge badge-success">增强</span></p>
+                <ul>
+                    <li>为角色和对话添加文件夹组织功能</li>
+                    <li>实现拖放重新排序</li>
+                    <li>添加文件夹描述支持</li>
+                    <li>改进拖动操作期间的视觉反馈</li>
+                </ul>
+
+                <h4>版本 1.0.0 - 2025年11月</h4>
+                <p><span class="badge badge-success">初始版本</span></p>
+                <ul>
+                    <li>带可视化编辑器的核心对话系统</li>
+                    <li>多语言本地化支持</li>
+                    <li>Google Sheets 集成</li>
+                    <li>角色管理系统</li>
+                    <li>选择和条件分支</li>
+                    <li>事件系统集成</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
