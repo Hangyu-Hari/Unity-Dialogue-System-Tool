@@ -237,10 +237,45 @@ public class NPCInteraction : MonoBehaviour
 
             <section id="manager-window">
                 <h2>管理器窗口使用指南</h2>
-                
+
                 <p>管理器窗口是管理对话系统的中央枢纽。通过 <code>Tools → Dialogue System → Manager Window</code> 访问</p>
 
                 <h3>窗口概览</h3>
+                <h3>工具栏功能</h3>
+
+                <h4>刷新按钮</h4>
+                <p><strong>Refresh（刷新）</strong>按钮会重新加载所有数据并检测 Google Sheets 的变化。</p>
+
+                <div class="alert alert-info">
+                    <strong>刷新功能：</strong>
+                    <ul>
+                        <li>✅ 重新加载本地对话文件和角色库</li>
+                        <li>✅ 从 Google Sheets 下载最新翻译</li>
+                        <li>✅ 自动检测 ID 变化（新增、修改或删除）</li>
+                        <li>✅ 显示详细的变化报告和受影响的对话文件</li>
+                        <li>✅ 提供自动更新受影响的 .dtree 文件选项</li>
+                    </ul>
+                </div>
+
+                <h5>何时使用刷新</h5>
+                <ul>
+                    <li><strong>更新 Google Sheets 后：</strong>将最新翻译重新加载到 Unity 中</li>
+                    <li><strong>团队协作时：</strong>同步其他团队成员所做的更改</li>
+                    <li><strong>添加新 ID 后：</strong>检测新添加的角色名称或对话文本</li>
+                    <li><strong>质量检查：</strong>验证哪些文件受到翻译更改的影响</li>
+                </ul>
+
+                <h5>变化检测报告</h5>
+                <p>当刷新检测到变化时，会显示对话框包含：</p>
+                <ul>
+                    <li><strong>变化的 ID 列表：</strong>显示哪些 ID 被添加、修改或删除</li>
+                    <li><strong>受影响的文件：</strong>列出所有使用了变化 ID 的 .dtree 文件</li>
+                    <li><strong>更新选项：</strong>询问是否要自动重新保存受影响的文件</li>
+                </ul>
+
+                <div class="alert alert-success">
+                    <strong>💡 最佳实践：</strong>在对 Google Sheets 进行重大更改后点击刷新，以保持 Unity 项目同步！
+                </div>
                 <p>管理器窗口包含四个主要部分：</p>
                 <ul>
                     <li><strong>本地化设置</strong> - 配置 Google Sheets 集成</li>
@@ -250,7 +285,7 @@ public class NPCInteraction : MonoBehaviour
                 </ul>
 
                 <h3>1. 角色管理</h3>
-                
+
                 <h4>创建角色</h4>
                 <div class="step-box">
                     <h5>方法：使用右键菜单（推荐）</h5>
@@ -265,7 +300,8 @@ public class NPCInteraction : MonoBehaviour
                 <p>点击任意角色卡片上的 <strong>编辑</strong> 按钮进行修改：</p>
                 <ul>
                     <li><strong>角色 ID</strong> - 内部标识符（显示为 "Character:"）</li>
-                    <li><strong>名称</strong> - 显示名称，支持两种输入模式：
+                    <li>
+                        <strong>名称</strong> - 显示名称，支持两种输入模式：
                         <ul>
                             <li><strong>直接输入</strong> - 直接为每种语言输入文本</li>
                             <li><strong>使用 ID</strong> - 引用 Google Sheets 中的本地化 ID</li>
@@ -284,7 +320,7 @@ public class NPCInteraction : MonoBehaviour
                         <li>命名文件夹（例如："主角色"、"NPC"）</li>
                     </ol>
                 </div>
-                
+
                 <p><strong>文件夹操作（通过右键）：</strong></p>
                 <ul>
                     <li><strong>新建文件夹</strong> - 创建子文件夹</li>
@@ -295,7 +331,7 @@ public class NPCInteraction : MonoBehaviour
                 <p><strong>移动角色：</strong>在文件夹间拖放角色或在文件夹内重新排序。</p>
 
                 <h3>2. 对话树管理</h3>
-                
+
                 <h4>创建对话树</h4>
                 <div class="step-box">
                     <h5>方法：使用右键菜单（推荐）</h5>
@@ -340,34 +376,95 @@ public class NPCInteraction : MonoBehaviour
 
             <section id="updates">
                 <h2>📋 更新日志</h2>
-                
+
                 <div class="alert alert-info">
                     及时了解对话系统的最新功能、改进和错误修复。
                 </div>
+                <h3>🎉 版本 1.3.0 - 2026年1月</h3>
+                <p><span class="badge badge-success">新功能</span> <span class="badge badge-info">管理窗口</span></p>
+
+                <h4>增强的刷新功能与变化检测</h4>
+                <p>刷新按钮现在可以自动检测并报告来自 Google Sheets 本地化数据的变化。</p>
+
+                <h5>新功能：</h5>
+                <ul>
+                    <li>
+                        <strong>自动变化检测</strong>
+                        <ul>
+                            <li>检测添加到 Google Sheets 的新 ID</li>
+                            <li>识别修改的翻译（任何语言的变化）</li>
+                            <li>标记不再存在于电子表格中的已删除 ID</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>详细变化报告</strong>
+                        <ul>
+                            <li>显示完整的变化 ID 列表及状态指示器</li>
+                            <li>显示使用了变化 ID 的受影响 .dtree 文件</li>
+                            <li>提供文件数量和变化摘要</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>智能文件更新</strong>
+                        <ul>
+                            <li>提供自动重新保存受影响对话文件的选项</li>
+                            <li>仅更新实际使用了变化 ID 的文件</li>
+                            <li>同时更新 .dtree 编辑器文件和运行时数据</li>
+                            <li>尊重 ID 模式设置（仅更新"使用 ID"模式的内容）</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>更好的团队工作流程</strong>
+                        <ul>
+                            <li>一键同步最新翻译</li>
+                            <li>准确了解发生了什么变化以及哪些文件需要注意</li>
+                            <li>防止对话文件中出现过时的翻译</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h5>工作原理：</h5>
+                <ol>
+                    <li>点击管理窗口工具栏中的 <strong>Refresh</strong> 按钮</li>
+                    <li>系统保存当前本地化数据以进行比较</li>
+                    <li>从 Google Sheets 下载最新数据</li>
+                    <li>自动比较旧数据与新数据以检测变化</li>
+                    <li>显示带有变化摘要和受影响文件的对话框</li>
+                    <li>可选地使用最新翻译更新对话文件</li>
+                </ol>
+
+                <div class="alert alert-success">
+                    <strong>✨ 结果：</strong>无需再手动跟踪翻译更改！系统会准确告诉您发生了什么变化，并帮助您自动更新对话文件。
+                </div>
+
+                <hr style="margin: 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
 
                 <h3>🎉 版本 1.2.0 - 2026年1月</h3>
                 <p><span class="badge badge-success">界面改进</span> <span class="badge badge-info">管理器窗口</span></p>
-                
+
                 <h4>管理器窗口 UI 重新设计</h4>
                 <p>完全重构管理器窗口界面，提升可用性和设计简洁性。</p>
-                
+
                 <h5>变更内容：</h5>
                 <ul>
-                    <li><strong>右键菜单导航</strong>
+                    <li>
+                        <strong>右键菜单导航</strong>
                         <ul>
                             <li>将"+ 新建角色"按钮移至"全部角色"右键菜单</li>
                             <li>将"+ 新建对话"按钮移至"全部对话"右键菜单</li>
                             <li>将文件夹"重命名"和"删除"按钮移至文件夹右键菜单</li>
                         </ul>
                     </li>
-                    <li><strong>更简洁的界面</strong>
+                    <li>
+                        <strong>更简洁的界面</strong>
                         <ul>
                             <li>移除标题和文件夹上的可见操作按钮</li>
                             <li>减少视觉杂乱同时保持完整功能</li>
                             <li>更多屏幕空间用于查看角色和对话</li>
                         </ul>
                     </li>
-                    <li><strong>保留的功能</strong>
+                    <li>
+                        <strong>保留的功能</strong>
                         <ul>
                             <li>角色卡片上的编辑/删除按钮保持不变</li>
                             <li>所有拖放功能照常工作</li>
@@ -392,7 +489,7 @@ public class NPCInteraction : MonoBehaviour
                 <hr style="margin: 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
 
                 <h3>历史版本</h3>
-                
+
                 <h4>版本 1.1.0 - 2025年12月</h4>
                 <p><span class="badge badge-info">功能</span> <span class="badge badge-success">增强</span></p>
                 <ul>
