@@ -237,15 +237,14 @@ public class NPCInteraction : MonoBehaviour
 
             <section id="manager-window">
                 <h2>管理器窗口使用指南</h2>
-
+                
                 <p>管理器窗口是管理对话系统的中央枢纽。通过 <code>Tools → Dialogue System → Manager Window</code> 访问</p>
 
-                <h3>窗口概览</h3>
                 <h3>工具栏功能</h3>
-
+                
                 <h4>刷新按钮</h4>
                 <p><strong>Refresh（刷新）</strong>按钮会重新加载所有数据并检测 Google Sheets 的变化。</p>
-
+                
                 <div class="alert alert-info">
                     <strong>刷新功能：</strong>
                     <ul>
@@ -276,110 +275,24 @@ public class NPCInteraction : MonoBehaviour
                 <div class="alert alert-success">
                     <strong>💡 最佳实践：</strong>在对 Google Sheets 进行重大更改后点击刷新，以保持 Unity 项目同步！
                 </div>
-                <p>管理器窗口包含四个主要部分：</p>
+
+                <h3>如何使用右键菜单</h3>
                 <ul>
-                    <li><strong>本地化设置</strong> - 配置 Google Sheets 集成</li>
-                    <li><strong>全部角色</strong> - 管理对话角色和头像</li>
-                    <li><strong>全部对话</strong> - 组织对话树文件</li>
-                    <li><strong>工具栏操作</strong> - 快速访问扫描和刷新功能</li>
+                    <li><strong>创建角色：</strong>右键"全部角色" → "+ New Character"</li>
+                    <li><strong>创建对话：</strong>右键"全部对话" → "+ New Dialogue"</li>
+                    <li><strong>重命名文件夹：</strong>右键文件夹 → "Rename"</li>
+                    <li><strong>删除文件夹：</strong>右键文件夹 → "Delete"</li>
+                    <li><strong>创建子文件夹：</strong>右键任意文件夹 → "New Folder"</li>
                 </ul>
-
-                <h3>1. 角色管理</h3>
-
-                <h4>创建角色</h4>
-                <div class="step-box">
-                    <h5>方法：使用右键菜单（推荐）</h5>
-                    <ol>
-                        <li>在 <strong>"全部角色"</strong> 标题上右键</li>
-                        <li>选择 <strong>"+ 新建角色"</strong></li>
-                        <li>新角色将以编辑模式出现</li>
-                    </ol>
-                </div>
-
-                <h4>编辑角色</h4>
-                <p>点击任意角色卡片上的 <strong>编辑</strong> 按钮进行修改：</p>
-                <ul>
-                    <li><strong>角色 ID</strong> - 内部标识符（显示为 "Character:"）</li>
-                    <li>
-                        <strong>名称</strong> - 显示名称，支持两种输入模式：
-                        <ul>
-                            <li><strong>直接输入</strong> - 直接为每种语言输入文本</li>
-                            <li><strong>使用 ID</strong> - 引用 Google Sheets 中的本地化 ID</li>
-                        </ul>
-                    </li>
-                    <li><strong>头像</strong> - 角色肖像（必须在 Resources 文件夹中）</li>
-                    <li><strong>是玩家</strong> - 切换该角色是否代表玩家</li>
-                </ul>
-
-                <h4>使用文件夹组织</h4>
-                <div class="step-box">
-                    <h5>创建角色文件夹</h5>
-                    <ol>
-                        <li>在 <strong>"全部角色"</strong> 或任意文件夹上右键</li>
-                        <li>选择 <strong>"新建文件夹"</strong></li>
-                        <li>命名文件夹（例如："主角色"、"NPC"）</li>
-                    </ol>
-                </div>
-
-                <p><strong>文件夹操作（通过右键）：</strong></p>
-                <ul>
-                    <li><strong>新建文件夹</strong> - 创建子文件夹</li>
-                    <li><strong>重命名</strong> - 更改文件夹名称</li>
-                    <li><strong>删除</strong> - 移除文件夹（角色将移至"全部角色"）</li>
-                </ul>
-
-                <p><strong>移动角色：</strong>在文件夹间拖放角色或在文件夹内重新排序。</p>
-
-                <h3>2. 对话树管理</h3>
-
-                <h4>创建对话树</h4>
-                <div class="step-box">
-                    <h5>方法：使用右键菜单（推荐）</h5>
-                    <ol>
-                        <li>在 <strong>"全部对话"</strong> 标题上右键</li>
-                        <li>选择 <strong>"+ 新建对话"</strong></li>
-                        <li>选择保存位置并输入文件名</li>
-                        <li>新的 .dtree 文件将被创建并打开</li>
-                    </ol>
-                </div>
-
-                <h4>打开对话树</h4>
-                <p>双击任意对话文件在对话树编辑器中打开。</p>
-
-                <h4>使用文件夹组织</h4>
-                <div class="step-box">
-                    <h5>创建对话文件夹</h5>
-                    <ol>
-                        <li>在 <strong>"全部对话"</strong> 或任意文件夹上右键</li>
-                        <li>选择 <strong>"新建文件夹"</strong></li>
-                        <li>命名文件夹（例如："第一章"、"支线任务"）</li>
-                    </ol>
-                </div>
-
-                <p><strong>文件夹操作（通过右键）：</strong></p>
-                <ul>
-                    <li><strong>新建文件夹</strong> - 创建子文件夹</li>
-                    <li><strong>重命名</strong> - 更改文件夹名称</li>
-                    <li><strong>删除</strong> - 移除文件夹（文件将移至"全部对话"）</li>
-                </ul>
-
-                <p><strong>移动文件：</strong>在文件夹间拖放对话文件或在文件夹内重新排序。</p>
-
-                <div class="alert alert-info">
-                    <strong>💡 专业提示：</strong>使用文件夹按章节、角色弧线或游戏位置组织内容。这使得在大型项目中更容易查找和管理对话。
-                </div>
-
-                <div class="alert alert-success">
-                    <strong>✨ 最新更新：</strong>所有创建、重命名和删除操作已移至右键菜单，界面更加简洁！
-                </div>
             </section>
 
             <section id="updates">
                 <h2>📋 更新日志</h2>
-
+                
                 <div class="alert alert-info">
                     及时了解对话系统的最新功能、改进和错误修复。
                 </div>
+
                 <h3>🎉 版本 1.3.0 - 2026年1月</h3>
                 <p><span class="badge badge-success">新功能</span> <span class="badge badge-info">管理窗口</span></p>
 
